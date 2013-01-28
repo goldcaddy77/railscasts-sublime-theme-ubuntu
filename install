@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 
 THEME_DIR="`pwd`"
 SUBLIME_PACKAGES="$(dirname "$THEME_DIR")"
@@ -8,16 +7,17 @@ SUBLIME_PACKAGES="$(dirname "$THEME_DIR")"
 PREF_FILE_NAME="Preferences.sublime-settings"
 SUBLIME_SETTINGS=$SUBLIME_PACKAGES/User/$PREF_FILE_NAME
 
-# Grab Bitstream Vera Mono font from web
+echo "Downloading Bitstream Vera Mono font from web"
 cd ~/.fonts
-sudo curl http://ftp.gnome.org/pub/GNOME/sources/ttf-bitstream-vera/1.10/ttf-bitstream-vera-1.10.tar.gz > bsv.tar.gz
-tar -xvf bsv.tar.gz        
+curl http://ftp.gnome.org/pub/GNOME/sources/ttf-bitstream-vera/1.10/ttf-bitstream-vera-1.10.tar.gz > bsv.tar.gz
+tar -xvf bsv.tar.gz > /dev/null 2>&1
 mv -f ttf-bitstream-vera-1.10/VeraMono.ttf ~/.fonts
 rm -rf ttf-bitstream-vera-1.10
 rm bsv.tar.gz
 
-# Refresh fonts on system
-sudo fc-cache -fv
+echo "Refresh font caches"
+fc-cache -fv > /dev/null 2>&1
+echo ""
 
 if [[ -a $SUBLIME_SETTINGS ]]
 then

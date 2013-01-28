@@ -1,0 +1,41 @@
+#!/bin/bash
+set +x
+
+# The root of the project
+SCRIPT_ROOT="`pwd`"
+
+# symlink settings in
+SUBLIME_DIR=~/.config/sublime-text-2/Packages
+SUBLIME_SETTINGS="$SUBLIME_DIR/User/Preferences.sublime-settings"
+
+# Make a directory for the new theme
+if [ ! -d "$SUBLIME_DIR/Theme - RailsCasts" ] ; then
+    mkdir "$SUBLIME_DIR/Theme - RailsCasts"
+fi
+
+cp $SCRIPT_ROOT/theme/railscasts.tmTheme "$SUBLIME_DIR/Theme - RailsCasts/railscasts.tmTheme"
+
+# Grab the Bitstream Vera Mono font
+if [ ! -d "$HOME/.fonts" ] ; then
+    mkdir "$HOME/.fonts"
+fi
+cd ~/.fonts
+sudo curl http://ftp.gnome.org/pub/GNOME/sources/ttf-bitstream-vera/1.10/ttf-bitstream-vera-1.10.tar.gz > bsv.tar.gz
+tar -xvf bsv.tar.gz        
+cd ttf-bitstream-vera-1.10 
+mv -f VeraMono.ttf ~/.fonts
+cd ~/.fonts
+rm -rf ttf-bitstream-vera-1.10
+rm bsv.tar.gz 
+
+# Refresh fonts on system
+sudo fc-cache -fv
+
+# Move the new sublime settings to the preferences file
+echo " " >> $SUBLIME_SETTINGS
+echo "Merge the following items into this settings file.  If this was previously blank, just put the rows between the braces" >> $SUBLIME_SETTINGS
+echo '  "color_scheme": "Packages/Theme - RailsCasts/railscasts.tmTheme", ' >> $SUBLIME_SETTINGS
+echo '  "font_face": "Bitstream Vera Sans Mono", ' >> $SUBLIME_SETTINGS
+subl $SUBLIME_SETTINGS
+
+echo "Please restart Sublime Text to use your new theme."

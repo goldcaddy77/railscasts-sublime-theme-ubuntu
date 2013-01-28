@@ -11,16 +11,20 @@ Note: the paths in the included script assume you've installed Sublime Text via 
 cd ~/.config/sublime-text-2/Packages/
 git clone git://github.com/goldcaddy77/railscasts-sublime-theme-ubuntu.git "Theme - RailsCasts"
 cd "Theme - RailsCasts"
-script/install
+./install
 ```
 
 After the script completes, it should have added 2 lines to the bottom of your /Packages/User/Preferences.sublime-settings file and opened this in Sublime Text.  Merge these configuration settings into the settings hash:
 
 #### Before
-![Before](http://i.imgur.com/zEc0npy.png "Before")
+![Before](http://i.imgur.com/TajUHbs.jpg "Before")
+
+Just grab the 2 lines circled above and merge them into the hash so it looks like this:
 
 #### After
-![After](http://i.imgur.com/E2GmvLW.png "After")
+![After](http://i.imgur.com/nzgpVHC.jpg "After")
+
+The theme should pick up when you save the settings file.
 
 ### Font
 

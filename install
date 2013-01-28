@@ -1,0 +1,37 @@
+#!/bin/bash
+set -x
+
+THEME_DIR="`pwd`"
+SUBLIME_PACKAGES="$(dirname "$THEME_DIR")"
+
+# Sublime settings file
+PREF_FILE_NAME = Preferences.sublime-settings
+SUBLIME_SETTINGS=$SUBLIME_PACKAGES/User/$PREF_FILE_NAME
+
+# Grab Bitstream Vera Mono font from web
+cd ~/.fonts
+sudo curl http://ftp.gnome.org/pub/GNOME/sources/ttf-bitstream-vera/1.10/ttf-bitstream-vera-1.10.tar.gz > bsv.tar.gz
+tar -xvf bsv.tar.gz        
+mv -f ttf-bitstream-vera-1.10/VeraMono.ttf ~/.fonts
+rm -rf ttf-bitstream-vera-1.10
+rm bsv.tar.gz
+
+# Refresh fonts on system
+sudo fc-cache -fv
+
+if [[ -a $SUBLIME_SETTINGS ]]
+then
+  # Add theme and font settings to the sublime settings file
+  echo "New settings have been added to the bottom of your $PREF_FILE_NAME file.  Please merge these settings into the settings hash and save the changes.  Your theme should be picked up immediately on save."
+  echo " \n" >> $SUBLIME_SETTINGS
+  echo "Merge the following items into this settings file.  If this was previously blank, just put the rows between the braces" >> $SUBLIME_SETTINGS
+  echo '  "color_scheme": "Packages/Theme - RailsCasts/railscasts.tmTheme", ' >> $SUBLIME_SETTINGS
+  echo '  "font_face": "Bitstream Vera Sans Mono", ' >> $SUBLIME_SETTINGS
+  subl $SUBLIME_SETTINGS
+
+  echo "Please restart Sublime Text to use your new theme."
+else
+  echo "It appears you did not install the Sublime Text package from the PPA.  You'll need to manually add the following lines to your $PREF_FILE_NAME file:"
+  echo '  "color_scheme": "Packages/Theme - RailsCasts/railscasts.tmTheme", '
+  echo '  "font_face": "Bitstream Vera Sans Mono", '
+fi

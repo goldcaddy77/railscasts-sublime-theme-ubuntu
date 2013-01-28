@@ -7,7 +7,7 @@ SublimeText port of [Ryan Bates](http://railscasts.com/about)' [TextMate theme](
 ### Using Included Script
 Note: the paths in the included script assume you've installed Sublime Text via the [Sublime Text 2 Ubuntu PPA](http://www.webupd8.org/2011/03/sublime-text-2-ubuntu-ppa.html).  If you have installed Sublime Text manually, you'll likely need to modify the paths in the script.
 
-```
+```sh
 git://github.com/goldcaddy77/railscasts-sublime-theme-ubuntu.git
 cd railscasts-sublime-theme-ubuntu
 script/install

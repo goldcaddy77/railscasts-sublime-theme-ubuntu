@@ -1,11 +1,11 @@
-# Sublime Text 2 - RailsCasts Theme
+# Sublime Text 2 - RailsCasts Theme Installer
 
-SublimeText port of [Ryan Bates](http://railscasts.com/about) [TextMate theme](http://media.railscasts.com/resources/textmate_theme.zip) and a bash script to install the theme.
+SublimeText port of [Ryan Bates](http://railscasts.com/about)' [TextMate theme](http://media.railscasts.com/resources/textmate_theme.zip) and a bash script to install the theme.
 
 ## Installation
 
 ### Using Included Script
-Note: the paths in the included script assume you've installed Sublime Text via the [Sublime Text 2 Ubuntu PPA](http://www.webupd8.org/2011/03/sublime-text-2-ubuntu-ppa.html).  If you have installed Sublime Text manually, you'll likely need to modify the paths in these scripts.
+Note: the paths in the included script assume you've installed Sublime Text via the [Sublime Text 2 Ubuntu PPA](http://www.webupd8.org/2011/03/sublime-text-2-ubuntu-ppa.html).  If you have installed Sublime Text manually, you'll likely need to modify the paths in the script.
 
 ```
 git://github.com/goldcaddy77/railscasts-sublime-theme-ubuntu.git
